@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>我的英语学习伴侣</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <!-- 下面这一块是用于每日提醒的，先照抄，后面会教你怎么获取一个ID替换进去 -->
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+        window.OneSignalDeferred = window.OneSignalDeferred || [];
+        OneSignalDeferred.push(async function(OneSignal) {
+            await OneSignal.init({
+                appId: "请替换成你的AppID",   // 这里先不要动，后面教你怎么改
+                safari_web_id: "请替换成你的SafariID",
+                notifyButton: { enable: true },
+                allowLocalhostAsSecureOrigin: true,
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="app-container">
+        <header>📘 我的英语学习伴侣</header>
+        <main>
+            <div class="progress-section">
+                <div class="progress-circle">今日已学 0 / 5 个单词</div>
+                <div class="checkin-buttons">
+                    <button id="打卡按钮" class="btn">✅ 今日打卡</button>
+                    <button id="提醒按钮" class="btn">⏰ 提醒我学习</button>
+                </div>
+            </div>
+            <div class="word-section">
+                <div class="word-card" id="单词卡片">
+                    <div class="word-front">👉 点击卡片开始学习 👈</div>
+                </div>
+                <div class="nav-buttons">
+                    <button id="上一个按钮">◀ 上一个</button>
+                    <button id="下一个按钮">下一个 ▶</button>
+                </div>
+            </div>
+            <div class="info-tip">
+                💡 小提示：点击卡片显示释义和例句，再次点击回到单词
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
